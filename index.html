@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kartheek Sugreevu | Portfolio</title>
+  <style>
+    :root {
+      --primary: #7f56d9;
+      --secondary: #5e3aa1;
+      --light: #f3f4f6;
+      --dark: #1f2937;
+      --gray: #6b7280;
+      --accent1: #eef2ff;
+      --accent2: #ede9fe;
+      --accent3: #fef3c7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+    }
+
+    header {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      animation: fadeInDown 1s ease;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      object-fit: cover;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+
+    nav a {
+      margin-left: 1rem;
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+      padding: 3rem 1rem;
+      text-align: center;
+      background: var(--accent1);
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-top: 1rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-style: italic;
+      color: var(--gray);
+      margin: 0.5rem 0 1.5rem;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .buttons a:hover {
+      background: var(--secondary);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+      padding: 2rem;
+      border-radius: 8px;
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+    }
+
+    section:nth-of-type(odd) { background: var(--accent2); }
+    section:nth-of-type(even) { background: var(--accent3); }
+
+    section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll("section");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+          }
+        });
+      }, { threshold: 0.1 });
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/mnt/data/FB_IMG_1634977636989.jpg" alt="Kartheek Sugreevu" />
+      <h1>Kartheek Sugreevu</h1>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Hi, I'm Kartheek Sugreevu</h2>
+    <p>🚗 Aspiring ADAS Systems Engineer | Simulation Enthusiast | Python Developer</p>
+    <div class="buttons">
+      <a href="#">Download CV</a>
+      <a href="mailto:kartheeksugre@gmail.com">Contact Me</a>
+    </div>
+  </section>
+
+  <div class="container">
+    <section id="about">
+      <h3>About Me</h3>
+      <p>I’m a graduate student based in Jena, Germany with a passion for ADAS systems, sensor simulations, and real-time testing. Skilled in Python, CANoe, CARLA, and hardware/software integration. Seeking roles where I can apply and grow my expertise in autonomous systems.</p>
+    </section>
+
+    <section id="experience">
+      <h3>Experience</h3>
+      <h4>Experimental Data Logger and Analyzer – Magnet World AG, Jena (May 2023 – Aug 2023)</h4>
+      <ul>
+        <li>Built Python GUI to simulate and log real-time sensor data</li>
+        <li>Utilized Pandas and Matplotlib for data analysis</li>
+      </ul>
+      <h4>3D Magnetic Measurement Automation – Magnet World AG, Jena (Sep 2022 – Apr 2023)</h4>
+      <ul>
+        <li>Designed hardware/software system for 3D magnetic measurement</li>
+        <li>Used Arduino, Inventor, 3D printing, and Python GUI</li>
+      </ul>
+      <h4>Rest Bus Simulation – Jacks Technologies, India (Sep 2023 – Apr 2024)</h4>
+      <ul>
+        <li>Simulated CAN messages and automated testing using CAPL & Python</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h3>Projects</h3>
+      <p><strong>Self-Driving Car Simulation (CARLA):</strong> Designed driving experiments with LiDAR & camera sensors for object detection and navigation.</p>
+      <p><strong>Sensor Data Visualization:</strong> Analyzed simulation logs using Python to visualize tracking and anomaly detection.</p>
+      <p><strong>Real-time Orientation Tracker:</strong> Built pitch/roll tracker using MPU-6050 and Arduino with real-time display.</p>
+    </section>
+
+    <section id="education">
+      <h3>Education</h3>
+      <ul>
+        <li><strong>MSc in Scientific Instrumentation</strong> – Ernst Abbe Hochschule Jena (2020 – Present)</li>
+        <li><strong>BTech in Mechanical Engineering</strong> – JNTU Kakinada (2014 – 2018)</li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h3>Skills</h3>
+      <ul>
+        <li><strong>Programming:</strong> Python, C++, MATLAB</li>
+        <li><strong>Hardware:</strong> Arduino, CAN, LIN, UDS</li>
+        <li><strong>Tools:</strong> CARLA, CANoe, DBC Editor, Tkinter, Pandas, Matplotlib</li>
+        <li><strong>Languages:</strong> English (Native), German (Proficient)</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h3>Contact</h3>
+      <p>Email: <a href="mailto:kartheeksugre@gmail.com">kartheeksugre@gmail.com</a></p>
+      <p>Phone: +49 17697722523</p>
+      <p>Location: Jena, Germany</p>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Kartheek Sugreevu. All rights reserved.</p>
+  </footer>
+</body>
+</html>
