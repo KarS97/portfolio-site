@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kartheek Sugreevu | Portfolio</title>
+  <style>
+    :root {
+      --primary: #7f56d9;
+      --secondary: #5e3aa1;
+      --light: #f3f4f6;
+      --dark: #1f2937;
+      --gray: #6b7280;
+      --accent1: #eef2ff;
+      --accent2: #ede9fe;
+      --accent3: #fef3c7;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+    }
+    header {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      animation: fadeInDown 1s ease;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .logo img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      object-fit: cover;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .logo h1 {
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+    nav a {
+      margin-left: 1rem;
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: var(--primary);
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero {
+      padding: 3rem 1rem;
+      text-align: center;
+      background: var(--accent1);
+      animation: fadeInUp 1s ease;
+    }
+    .hero h2 {
+      font-size: 2rem;
+      margin-top: 1rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-style: italic;
+      color: var(--gray);
+      margin: 0.5rem 0 1.5rem;
+    }
+    .buttons a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    .buttons a:hover {
+      background: var(--secondary);
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+    section {
+      margin-bottom: 2.5rem;
+      padding: 2rem;
+      border-radius: 8px;
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+    }
+    section:nth-of-type(odd) { background: var(--accent2); }
+    section:nth-of-type(even) { background: var(--accent3); }
+    section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    ul {
+      padding-left: 20px;
+      margin-top: 0.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .cert-item img, .cert-item iframe {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      cursor: zoom-in;
+    }
+    #lightbox-modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    #lightbox-modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+    }
+    .filter-buttons {
+      margin-bottom: 1rem;
+    }
+    .filter-buttons button {
+      margin-right: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      background: var(--primary);
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll("section");
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+          }
+        });
+      }, { threshold: 0.1 });
+      sections.forEach(section => observer.observe(section));
+
+      document.querySelectorAll('.lightbox-link').forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const modal = document.getElementById('lightbox-modal');
+          modal.querySelector('img').src = link.href;
+          modal.style.display = 'flex';
+        });
+      });
+    });
+    function filterCerts(topic) {
+      document.querySelectorAll('.cert-item').forEach(item => {
+        if (topic === 'all' || item.dataset.topic === topic) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+  <!-- Lightbox modal -->
+  <div id="lightbox-modal" onclick="this.style.display='none'">
+    <img src="" alt="Full Certificate" />
+  </div>
+  <!-- Original content continues below -->
